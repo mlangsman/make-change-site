@@ -1,0 +1,265 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'The Optimist',
+    description:
+      'An online newspaper, using AI to rewrite journalism from a respected source with a positive perspective, maintaining factual accuracy and tone of voice.',
+    image: '/images/the-optimist-wordmark.png',
+    imageAlt: 'The Optimist',
+  },
+  {
+    title: 'The Optimist',
+    description:
+      'An online newspaper, rewriting high quality journalism from a respected source from a positive angle, maintaining factual accuracy and tone of voice.',
+    image: '/images/the-optimist-wordmark.png',
+    imageAlt: 'The Optimist',
+  },
+];
+---
+
+<div class="page">
+  <header class="top">
+    <a class="logo" href="/" aria-label="Home">
+      <img src="/images/logo.png" alt="" width="79" height="80" />
+    </a>
+    <nav aria-label="Main">
+      <a class="nav-link" href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 aria-label="Make Change &amp; Be Helpful to People">Make Change &amp;<br />Be <span class="typed" data-typed-word>Helpful</span> to People</h1>
+      <hr />
+      <p>Building fresh and inspiring concepts at the intersection of AI, design and human experience</p>
+    </section>
+
+    <figure class="quote">
+      <span class="mark" aria-hidden="true">&ldquo;</span>
+      <blockquote>
+        <p>No matter what anybody tells you, words and ideas can change the world</p>
+      </blockquote>
+      <figcaption><span class="dash" aria-hidden="true">-</span><cite>John Keating</cite></figcaption>
+    </figure>
+
+    <section class="projects" aria-labelledby="projects-label">
+      <h2 id="projects-label" class="label">Projects</h2>
+      <div class="cards">
+        {projects.map((p) => <ProjectCard {...p} />)}
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  import { startTypedWord } from '../scripts/typed-word';
+
+  const word = document.querySelector<HTMLElement>('[data-typed-word]');
+  if (word) {
+    startTypedWord(word, {
+      home: 'Helpful',
+      entries: [
+        'Rud > Kind',
+        'Terr > Terrific',
+        'Hostil > Hospitable',
+        'Evil > Excellent',
+        'Grump > Gracious',
+        'Awf > Awesome',
+        'Sarcas > Sincere',
+        'Condesc > Considerate',
+        'Smug > Generous',
+        'Savag > Sweet',
+        'Dism > Delightful',
+        // the way back to Helpful
+        'Hell > Helpful',
+        'Horr > Helpful',
+        'Harsh > Helpful',
+      ],
+    });
+  }
+</script>
+
+<style>
+  /* Measurements from Figma frame "Desktop - 5" (1441px wide) */
+  .page {
+    position: relative;
+    z-index: 2;
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--gutter) 90px;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .logo {
+    display: block;
+    width: 78.583px;
+    height: 79.587px;
+    margin: 46px 0 0 -13px; /* logo sits at x 51, 13px left of the grid */
+  }
+  .logo img {
+    width: 100%;
+    height: 100%;
+  }
+  .nav-link {
+    display: block;
+    margin-top: 64px;
+    font-size: 16px;
+    line-height: 1.22;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-link:hover {
+    color: var(--quote-mark);
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 352px;
+    max-width: 100%;
+    margin-top: 18.4px; /* hero top at y 144 */
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.13;
+    letter-spacing: -1.6px;
+    color: var(--ink-heading);
+    white-space: nowrap;
+  }
+  .hero hr {
+    width: 341px;
+    max-width: 100%;
+    height: 0;
+    margin: 0;
+    border: 0;
+    border-top: 0.5px solid #000;
+  }
+  .hero p {
+    font-size: 16px;
+    line-height: 1.22;
+    letter-spacing: -0.48px;
+  }
+
+  .quote {
+    position: relative;
+    width: 333px;
+    max-width: 100%;
+    margin: 43px 1px 0 auto; /* quote top at y 349, right edge at x 1376 */
+    text-align: right;
+  }
+  .quote blockquote {
+    margin: 0;
+  }
+  .quote blockquote p {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.01;
+    letter-spacing: -0.96px;
+    color: var(--ink);
+  }
+  .mark {
+    position: absolute;
+    left: 56px;
+    top: -52.4px;
+    transform: translateX(-100%);
+    font-family: var(--serif);
+    font-weight: 100;
+    font-size: 128px;
+    line-height: 1.22;
+    letter-spacing: -2.56px;
+    color: var(--quote-mark);
+    pointer-events: none;
+  }
+  .quote figcaption {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 12.2px; /* dash at x 1254 */
+    margin-top: 14.7px; /* attribution at y 493 */
+  }
+  .dash {
+    margin-top: 1px;
+    font-size: 16px;
+    line-height: 1.22;
+    letter-spacing: 0.8px;
+  }
+  cite {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.22;
+    letter-spacing: -0.4px;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 39.6px; /* projects at y 557 */
+  }
+  .label {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.22;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  @media (max-width: 900px) {
+    .logo {
+      width: 64px;
+      height: 64.8px;
+      margin: 20px 0 0 -10px;
+    }
+    .nav-link {
+      margin-top: 40px;
+    }
+    .hero {
+      margin-top: 24px;
+    }
+    h1 {
+      font-size: 36px;
+      white-space: normal;
+    }
+    /* Desktop quote scaled by 28/32 so the Figma line breaks hold */
+    .quote {
+      width: 292px;
+      margin-top: 88px;
+    }
+    .quote blockquote p {
+      font-size: 28px;
+      letter-spacing: -0.84px;
+    }
+    .mark {
+      left: 49px;
+      top: -45.8px;
+      font-size: 112px;
+    }
+    .projects {
+      margin-top: 64px;
+      gap: 24px;
+    }
+    .cards {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+import Aura from '../components/Aura.astro';
+
+interface Props {
+  title?: string;
+  noindex?: boolean;
+}
+const { title = 'Make Change & Be Helpful to People', noindex = false } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content="Building fresh and inspiring concepts at the intersection of AI, design and human experience." />
+    <meta name="theme-color" content="#f1ebeb" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="preload" href="/fonts/PPEiko-Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/PPNeueMontreal-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <Aura intensity={0.5} />
+    <slot />
+  </body>
+</html>

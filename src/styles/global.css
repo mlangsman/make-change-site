@@ -94,6 +94,31 @@ blockquote {
   margin: 0;
 }
 
+/* Headline word that retypes itself (src/scripts/typed-word.ts) */
+.typed {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+.typed::before {
+  content: '\200b'; /* keeps the line height when the word is fully deleted */
+}
+.typed-text.is-alt {
+  color: var(--quote-mark);
+}
+.typed-caret {
+  position: absolute;
+  left: calc(100% + 1px);
+  top: 0.18em;
+  width: 2px;
+  height: 0.8em;
+  background: var(--quote-mark);
+  opacity: 0;
+}
+.typed-caret.is-on {
+  opacity: 1;
+}
+
 :focus-visible {
   outline: 2px solid var(--quote-mark);
   outline-offset: 3px;
