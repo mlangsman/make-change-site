@@ -1,19 +1,21 @@
 ---
 import ProjectCard from './ProjectCard.astro';
+import logo from '../assets/images/logo.png';
+import optimistWordmark from '../assets/images/the-optimist-wordmark.png';
 
 const projects = [
   {
     title: 'The Optimist',
     description:
       'An online newspaper, using AI to rewrite journalism from a respected source with a positive perspective, maintaining factual accuracy and tone of voice.',
-    image: '/images/the-optimist-wordmark.png',
+    image: optimistWordmark.src,
     imageAlt: 'The Optimist',
   },
   {
     title: 'The Optimist',
     description:
       'An online newspaper, rewriting high quality journalism from a respected source from a positive angle, maintaining factual accuracy and tone of voice.',
-    image: '/images/the-optimist-wordmark.png',
+    image: optimistWordmark.src,
     imageAlt: 'The Optimist',
   },
 ];
@@ -21,8 +23,8 @@ const projects = [
 
 <div class="page">
   <header class="top">
-    <a class="logo" href="/" aria-label="Home">
-      <img src="/images/logo.png" alt="" width="79" height="80" />
+    <a class="logo" href={import.meta.env.BASE_URL} aria-label="Home">
+      <img src={logo.src} alt="" width="79" height="80" />
     </a>
     <nav aria-label="Main">
       <a class="nav-link" href="#about">About</a>

@@ -1,35 +1,35 @@
 /* Fonts: PP Eiko and PP Neue Montreal (Pangram Pangram). See README for licensing. */
 @font-face {
   font-family: 'PP Eiko';
-  src: url('/fonts/PPEiko-Medium.woff2') format('woff2');
+  src: url('../assets/fonts/PPEiko-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'PP Eiko';
-  src: url('/fonts/PPEiko-Thin.woff2') format('woff2');
+  src: url('../assets/fonts/PPEiko-Thin.woff2') format('woff2');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'PP Neue Montreal';
-  src: url('/fonts/PPNeueMontreal-Light.woff2') format('woff2');
+  src: url('../assets/fonts/PPNeueMontreal-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'PP Neue Montreal';
-  src: url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
+  src: url('../assets/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'PP Neue Montreal Text';
-  src: url('/fonts/PPNeueMontrealText-Book.woff2') format('woff2');
+  src: url('../assets/fonts/PPNeueMontrealText-Book.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
