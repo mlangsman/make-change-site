@@ -1,0 +1,77 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+}
+const { title, description, image, imageAlt } = Astro.props;
+---
+
+<article class="card" data-aura-focus>
+  <div class="media">
+    <img src={image} alt={imageAlt} width="440" height="179" loading="lazy" decoding="async" />
+  </div>
+  <div class="body">
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+</article>
+
+<style>
+  /* Figma: card 34:316 */
+  .card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: clip;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+  }
+  .media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 335px;
+    background: var(--card-media);
+  }
+  .media img {
+    width: 440px;
+    max-width: 68.7%;
+    height: auto;
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 0.93;
+    color: var(--ink-heading);
+  }
+  p {
+    font-family: var(--sans-text);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.22;
+    letter-spacing: -0.32px;
+    color: var(--ink);
+  }
+  @media (max-width: 900px) {
+    .media {
+      height: auto;
+      aspect-ratio: 640.5 / 335;
+    }
+    .body {
+      padding: 24px;
+    }
+    h3 {
+      font-size: 28px;
+    }
+  }
+</style>

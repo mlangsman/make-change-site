@@ -1,0 +1,67 @@
+---
+/**
+ * Fixed Aura background: a WebGL gradient canvas plus a film grain overlay.
+ * Elements with [data-aura-focus] tint the light plum around themselves on hover.
+ */
+interface Props {
+  intensity?: number;
+}
+const { intensity = 0.5 } = Astro.props;
+---
+
+<canvas class="aura" data-intensity={intensity} aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<script>
+  import { startAura } from '../scripts/aura';
+
+  const canvas = document.querySelector<HTMLCanvasElement>('canvas.aura');
+  if (canvas) {
+    startAura(canvas, {
+      intensity: Number(canvas.dataset.intensity ?? 0.5),
+      focusTargets: document.querySelectorAll('[data-aura-focus]'),
+    });
+  }
+</script>
+
+<style>
+  .aura {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+  .aura:global(.is-ready) {
+    opacity: 1;
+  }
+  .grain {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.6;
+    background: url('/images/grain.png') repeat;
+    background-size: 128px 128px;
+    animation: grain 0.9s steps(1) infinite;
+  }
+  @keyframes grain {
+    0% { transform: translate(0, 0); }
+    17% { transform: translate(-3%, 2%); }
+    33% { transform: translate(2%, -4%); }
+    50% { transform: translate(-4%, -1%); }
+    67% { transform: translate(4%, 3%); }
+    83% { transform: translate(-1%, 4%); }
+    100% { transform: translate(0, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .grain { animation: none; }
+    .aura { transition: none; }
+  }
+</style>
